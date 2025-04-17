@@ -27,6 +27,11 @@ kkma.nouns(text)  -> ['중복', '중복아', '아', '안녕']
 okt.nouns(text)   ->['중복', '중복', '중복', '안녕']
 hana.nouns(text)  ->['중복', '중복', '중복아님', '잘']
 
+따라서 여러 줄의 단어들을 kkma로 추출하고 싶을때는
+kkma.sentence(para)이후
+for i in sentences:
+      nouns.append(kkma.nouns(i))  과정이 필요
+
 kkma.pos(text)
 NNG 일반 명사         NNP 고유 명사         NNB 의존 명사     NR 수사            NP 대명사   VV 동사
 VA 형용사             VX 보조 용언          VCP 긍정 지정사   VCN 부정 지정사    MM 관형사
