@@ -48,3 +48,56 @@ pos 파라미터 : 품사(part-of-speech) 태그 지정
      'n': 명사 (Noun) : 기본값 
      'v': 동사 (Verb)
      'r': 부사 (Adverb)
+
+4. NaiveBayesClassifier 분류기
+train데이터는 밑의 (딕셔너리,클래스)의 튜플형태로 들어감, 클래스값은 이진분류뿐만아니라 다중분류도 가능
+    ({"awesome": True, "boring": False}, "pos"),
+    ({"awesome": False, "boring": True}, "neg"),
+
+from nltk.classify import NaiveBayesClassifier  
+from nltk.classify.util import accuracy   # lr.score()와 같은 기능
+
+dataset = [
+    ("I love this movie, it’s fantastic!", 'positive'),
+    ("This product is excellent, I would buy it again!", 'positive'),
+    ("I hated this movie, it was terrible.", 'negative'),
+    ("This is the worst product I have ever bought.", 'negative'),
+    ("I’m just going to have lunch now, nothing special.", 'neutral'),
+    ("The meeting went as planned, nothing out of the ordinary.", 'neutral'),
+    ("Amazing experience, very satisfied!", 'positive'),
+    ("Not happy with the service at all.", 'negative'),
+    ("The news today was about the economy, pretty standard stuff.", 'neutral')
+]
+
+--train데이터형태로 만들기
+def extract_features(sentence):
+    words = word_tokenize(sentence)
+    return {word: True for word in words} # {'단어' : True} : 단어 존재 여부
+
+feature_data = [(extract_features(sentence), label) for (sentence, label) in dataset] #(dict,class)형태로
+
+--훈련셋과 평가셋 나누기
+train_data = feature_data[:6] # 6 : 긍정(2)+부정(2)+중립(2)
+test_data = feature_data[6:] # 3 : 긍정(1) + 부정(1) + 중립(1)
+
+--학습 .fit대신 .train사용
+classifier = NaiveBayesClassifier.train(train_data)
+
+--검증 .score대신 accuracy사용
+accuracy(classifier, test_data)
+
+# 분류기 정보 출력 : 학습된 분류기에서 가장 정보량이 높은 특성(feature) 출력  
+classifier.show_most_informative_features() # (n=k)로 몇개까지 출력할지
+
+--분류진행 .predict 대신 .classify
+new_sentence1 = "The service was absolutely wonderful!" # 긍정문 
+features1 = extract_features(new_sentence1) # 특정 추출 
+classifier.classify(features1) # 분류기 적용 ->긍정예측
+
+new_sentence2="I’ll be home around 6 PM, see you then."
+features2 = extract_features(new_sentence2)
+classifier.classify(features2) # 중립 예측
+
+new_sentence3="The service was worst, i hate it."
+features3 = extract_features(new_sentence3)
+classifier.classify(features3)
