@@ -31,3 +31,15 @@ def clean_text(texts) :
 
     return texts_re4
 ->이후 불용어 제거
+
+
+3. lemmatizer
+from nltk.stem import WordNetLemmatizer로도 사용가능
+lemmatizer = WordNetLemmatizer()
+lemmatizer.lemmatize(word, pos='v') 형식으로 사용
+
+pos 파라미터 : 품사(part-of-speech) 태그 지정
+     'a': 형용사 (Adjective)
+     'n': 명사 (Noun) : 기본값 
+     'v': 동사 (Verb)
+     'r': 부사 (Adverb)
