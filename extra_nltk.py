@@ -7,12 +7,17 @@ from nltk.corpus import gutenberg
 
 dir(gutenberg) 
 '''
-fileids() : 말뭉치에서 전체 문서파일 가져오기  
-raw() : 문서 파일에서 원문 가져오기  
-paras() : 문서 파일에서 문단 가져오기(단어 단위)
-sents() : 문서 파일에서 문장 가져오기(단어 단위) 
-words() : 문서 파일에서 단어 가져오기 
+fileids() : 말뭉치에서 전체 문서파일 가져오기  -> 18종류의 txt파일 존재
+files=gutenberg.fileids()[:3]  ->3개 파일이름 가져오기 ['austen-emma.txt', 'austen-persuasion.txt', 'austen-sense.txt']
+이 파일들을 다음 메서드들에 넣음
+raw(files) : 문서 파일에서 원문 가져오기  
+paras(files) : 문서 파일에서 문단 가져오기(단어 단위로 3중리스트 안에) ->5265개 문단(리스트개수)
+sents(files) : 문서 파일에서 문장 가져오기(단어 단위로 2중리스트 안에) ->16498 문장(리스트개수)
+words(files) : 문서 파일에서 단어 가져오기 -> 432174 단어개수
 '''
+
+
+
 
 -words
 from nltk.corpus import words
