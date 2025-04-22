@@ -38,3 +38,40 @@ corpus = [
 -9. '국어','영어','수학','과학','사회' 열 정규화 두가지 방법
 -10. 키로 구간화하고 구간별 개수보기
 -11. 국어-영어-수학-과학을 x로 사회를y로하고 0.3의 비율로 train-test split
+
+
+6. NaiveBayesClassifier 분류기
+from nltk.classify import NaiveBayesClassifier  
+from nltk.classify.util import accuracy
+
+dataset = [
+    ("I love this movie, it’s fantastic!", 'positive'),
+    ("This product is excellent, I would buy it again!", 'positive'),
+    ("I hated this movie, it was terrible.", 'negative'),
+    ("This is the worst product I have ever bought.", 'negative'),
+    ("I’m just going to have lunch now, nothing special.", 'neutral'),
+    ("The meeting went as planned, nothing out of the ordinary.", 'neutral'),
+    ("Amazing experience, very satisfied!", 'positive'),
+    ("Not happy with the service at all.", 'negative'),
+    ("The news today was about the economy, pretty standard stuff.", 'neutral')
+]
+위의 데이터셋으로 데이터 최적화하고 앞의6개를 훈련세, 뒤의 3개를 검증셋으로
+-학습하고 검증점수 확인
+-예측해보기 ->밑의 데이터셋 하나하나씩(데이터변형필요)
+new_sentence1 = "The service was absolutely wonderful!"
+new_sentence2="I’ll be home around 6 PM, see you then."
+new_sentence3="The service was worst, i hate it."
+
+7. KMeansCluster로 텍스트 군집화, 유사문서끼리 분류
+from nltk.cluster import KMeansClusterer
+조건:num_clusters=2, distance=nltk.cluster.util.cosine_distance, repeats=25
+documents = [
+    "I love watching movies",
+    "The movie was fantastic and exciting",
+    "Hiking is a great outdoor activity",
+    "I enjoy going on hikes in the mountains", # 1
+    "Movies are a great way to relax",
+    "Mountains and nature hikes are my favorite activities" # 1 
+]
+이 document를 KMeansClustere에 넣어 유사한 문서끼리 분류하고 클래스가 3일때의 결과값은?
+옵션: assign_clusters=True
