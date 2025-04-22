@@ -101,3 +101,31 @@ classifier.classify(features2) # 중립 예측
 new_sentence3="The service was worst, i hate it."
 features3 = extract_features(new_sentence3)
 classifier.classify(features3)
+
+
+
+5.  nltk.cluster : 텍스트 군집화, 유사문서끼리 분류
+from sklearn.feature_extraction.text import CountVectorizer
+from nltk.cluster import KMeansClusterer 
+
+documents = [
+    "I love watching movies",
+    "The movie was fantastic and exciting",
+    "Hiking is a great outdoor activity",
+    "I enjoy going on hikes in the mountains", # 1
+    "Movies are a great way to relax",
+    "Mountains and nature hikes are my favorite activities" # 1 
+]
+vector=CountVectorizer(stop_words='english')
+bog=vector.fit_transform(documents).toarray()
+
+num_clusters = 2 # 군집화할 클래스 개수
+#분류기
+clusterer = KMeansClusterer(num_clusters, 
+                            distance=nltk.cluster.util.cosine_distance, #사용할 거리
+                            repeats=25)  #반복횟수
+#적용
+clusters = clusterer.cluster(bog, assign_clusters=True) 
+# 클러스터 결과 출력
+for i, cluster in enumerate(clusters):
+    print(f"Document {i} is in cluster {cluster}")
