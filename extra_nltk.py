@@ -19,3 +19,15 @@ from nltk.corpus import words
 nltk.download('words')
 eng_words = words.words()  ->리스트형태로 존재
 len(eng_words) # 236736
+
+
+2. 단어들로 이루어진 리스트의 전처리
+def clean_text(texts) : 
+    from re import sub # 함수 임포트
+    texts_re = [st.lower() for st in texts] # 단계1 : 소문자 변경     
+    texts_re2 = [sub(r'[^\w\d\s]', '', st) for st in texts_re]  # 단계2 : 특수문자나 문장부호(기호) 제거  
+    texts_re3 = [sub('[0-9]', '', st) for st in texts_re2] #단계3 : 숫자 제거 
+    texts_re4 = [st for st in texts_re3 if st != '' ] # 단계4 : '' 단어 제거(공백 아님)
+
+    return texts_re4
+->이후 불용어 제거
