@@ -129,3 +129,41 @@ clusters = clusterer.cluster(bog, assign_clusters=True)
 # 클러스터 결과 출력
 for i, cluster in enumerate(clusters):
     print(f"Document {i} is in cluster {cluster}")
+
+
+6. CountVectorizer없이 bog만들기
+import pandas as pd 
+import numpy as np 
+from konlpy.tag import Okt, Kkma
+# 원문 텍스트 
+text='''
+형태소 분석을 시작합니다. 나는 데이터 분석을 좋아합니다. 
+직업은 데이터 분석 전문가 입니다. Text mining 기법은 2000대 초반에 개발된 기술이다.
+'''
+kkma=Kkma()
+okt=Okt()
+sentences=kkma.sentences(text)
+sent_nouns=[]
+for i in sentences:
+    i=okt.normalize(i)
+    sent_nouns.append(okt.nouns(i))
+
+sent_nouns = [['형태소', '분석', '시작'], ['나', '데이터', '분석'], ['직업', '데이터', '분석', '전문가'], ['기법', '초반', '개발', '기술']] 
+# 단계1. 유일한 단어집 만들기  
+nouns=[]
+for i in sent_nouns:
+    nouns.extend(i)
+    
+unique=list(set(nouns))
+
+# 단계2. 영(zeros) 행렬 만들기 
+zeros = np.zeros(shape=(len(sent_nouns),len(unique)))
+
+# 단계3. 문서단어행렬(DTM) 만들기 
+dtm = pd.DataFrame(zeros,columns=unique)
+
+# 단계4. 문장 단위 단어 카운트
+for x,y in enumerate(sent_nouns):
+     for i in y:
+         dtm.loc[x,i]+=1  # x,i는 행값,열값
+print(dtm)
