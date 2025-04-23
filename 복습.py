@@ -15,13 +15,18 @@ text = """A barber is a person. a barber is good person. a barber is huge person
 The Secret He Kept is huge secret. Huge secret. His barber kept his word. a barber kept his word.
 His barber kept his secret. But keeping and keeping such a huge secret to himself was driving the barber crazy. The barber went up a huge mountain."""
 
-3.다음 corpus에 대해 문서유사도(2가지) 비교(두가지 방법-bog vs euclidian)->각 컬럼값이 어떤 단어인지 보기
+3-1.다음 corpus에 대해 문서유사도(2가지) 비교(두가지 방법-bog vs euclidian)->각 컬럼값이 어떤 단어인지 보기
 corpus = [
     'i love apple.',
     'apple is delicious which i love too.',
     'i want a delicious food, but not an apple.',
     'deep learning is difficult.'
 ]
+
+3-2. 다음 한국어를 전처리해서 문서유사도비교
+texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500GRAM 정력 최고!",
+         "나는 대한민국 우리나라 사람", "보험료 15000원에 평생 보장 마감 임박",
+         "나는 홍길동"]
 
 4. 주피터 노트북에 nltk->복습->newdata=pd.read_csv('./archive/movies_metadata.csv')읽어와
 영화넣으면 유사한 영화 10개나오는 함수 만들기
