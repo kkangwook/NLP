@@ -15,7 +15,7 @@ text = """A barber is a person. a barber is good person. a barber is huge person
 The Secret He Kept is huge secret. Huge secret. His barber kept his word. a barber kept his word.
 His barber kept his secret. But keeping and keeping such a huge secret to himself was driving the barber crazy. The barber went up a huge mountain."""
 
-3.다음 corpus에 대해 문서유사도(2가지) 비교(두가지 방법-bog vs euclidian)
+3.다음 corpus에 대해 문서유사도(2가지) 비교(두가지 방법-bog vs euclidian)->각 컬럼값이 어떤 단어인지 보기
 corpus = [
     'i love apple.',
     'apple is delicious which i love too.',
