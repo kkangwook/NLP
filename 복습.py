@@ -22,6 +22,9 @@ corpus = [
     'i want a delicious food, but not an apple.',
     'deep learning is difficult.'
 ]
+-> 새로운 문장 유사도 비교해서 어떤 문장이랑 가까운지
+new=['i learned deep learning today']
+
 
 3-2. 다음 한국어를 전처리해서 문서유사도비교2가지->빈도수 높은거 10개로
 texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500GRAM 정력 최고!",
