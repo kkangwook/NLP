@@ -5,14 +5,17 @@ countervectorizer안에는 텍스트들의 리스트 형태로 들어가야함
 texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500GRAM 정력 최고!",
          "나는 대한민국 우리나라 사람", "보험료 15000원에 평생 보장 마감 임박",
          "나는 홍길동"]
-직접 전처리해서 다시 텍스트들의 리스트로 만들어도 되지만 countervectorizer의 tokenizer옵션사용
+----직접 전처리해서 다시 텍스트들의 리스트로 만들어도 되지만 countervectorizer의 tokenizer옵션사용---
 from konlpy.tag import Okt
 okt=Okt()
 def tokenizer(text):
     text=okt.normalize(text)
     return okt.nouns(text)
 
-vector=CountVectorizer(tokenizer=tokenizer)
+vector=CountVectorizer(tokenizer=tokenizer)  #TfidfVectorizer도 가능
 bog=vector.fit_transform(texts).toarray()
 a=vector.vocabulary_
 print(a,bog)
+
+-----빈도수 높은거 순서대로 보기----
+new_tfidf = TfidfVectorizer(max_features = 20)  #Countervectorizer도 가능
