@@ -29,12 +29,12 @@ sentences = [
     "Miss Scarlett watered Professor Plum's green plant while he was away from his office last week."
 ]
 vector=TfidfVectorizer(stop_words='english')
-vector.fit(sentences)
+vector.fit(sentences)    #fit_transform대신 fit만
 bog=vector.transform(sentences)
 
 new = ['green plant in his study']
 newbog=vector.transform(new)
 
-sim=cosine_similarity(newbog, bog)
+sim=cosine_similarity(newbog, bog)  # (1,3)  반대로 넣으면 (3,1)
 sim = sim.reshape(3)
 sim_idx = sim.argsort()[::-1]  # 0이 제일 유사한 문장 
