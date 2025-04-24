@@ -51,7 +51,7 @@ texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500G
 
 --'텍스트' classification에 쓰이는 nltk모델 두가지-------------------
 
--nltk와 sklearn의 분류모델의 차이점은?
+
 -nltk의 두 모델 차이는?                    (지도학습vs비지도학습)
 
 6. NaiveBayesClassifier 분류기
@@ -89,7 +89,7 @@ documents = [
     "Movies are a great way to relax",
     "Mountains and nature hikes are my favorite activities" # 1 
 ]
-이 document를 KMeansClustere에 넣어 유사한 문서끼리 분류하고 클래스가 3일때의 결과값은?
+이 document를 전처리하고(소문자화+stem+불용어제거) KMeansClustere에 넣어 유사한 문서끼리 분류하고 클래스가 3일때의 결과값은?
 옵션: assign_clusters=True
 
 
