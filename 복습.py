@@ -24,7 +24,7 @@ corpus = [
 ]
 -> 새로운 문장 유사도 비교해서 어떤 문장이랑 가까운지
 new=['i learned deep learning today']
-
+-> 너무 희소하게 나오는 단어는 제거/ 너무 자주 나타나는 단어는 제거 파라미터는?
 
 3-2. 다음 한국어를 전처리해서 문서유사도비교2가지->빈도수 높은거 10개로
 texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500GRAM 정력 최고!",
@@ -97,7 +97,7 @@ documents = [
 --'텍스트' classification에 쓰이는 sklearn모델 두가지-------------------
 
 -두 모델 차이점은?                    (지도학습 vs 비지도학습)
-1. 분류
+8. 분류
 from sklearn.naive_bayes import MultinomialNB # Naive Bayes model
 from sklearn.metrics import accuracy_score, confusion_matrix # 평가 
 from sklearn.preprocessing import LabelEncoder # 10진수 인코딩 
@@ -112,7 +112,7 @@ df = pd.read_csv(path + '/spam_data.csv', header=None, encoding='utf-8')
 -정답을 정수 인코딩해서도 해보기
 
 
-2.군집화
+9.군집화
 from sklearn.cluster import KMeans
 
 -데이터
