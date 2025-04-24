@@ -40,6 +40,33 @@ sim = sim.reshape(3)
 sim_idx = sim.argsort()[::-1]  # 0이 제일 유사한 문장 
 
 
+
+---------------------------Counter/Tfidfvectorizer 파라미터---------------------------------
+-tokenizer:
+         def preprocess(text):
+    tokens = word_tokenize(text.lower())  # 소문자 변환 & 토큰화
+    stop_words = stopwords.words("english")  # 영어 불용어(인칭,전치사)
+  
+    filtered_tokens = [token for token in tokens if token.isalpha() and token not in stop_words]  
+    stemmer = PorterStemmer()  # 어근 처리 
+    stemmed_tokens = [stemmer.stem(token) for token in filtered_tokens]
+    return stemmed_tokens
+
+-stop_words
+-max_features = 4000 : 최대 사용할 단어개수
+min_df=5 : 너무 희소하게 나오는 단어는 제거(5개 이하로 나온 단어는 무시)
+max_df=0.1 : 너무 자주 나타나는 단어는 제거("문서에서 10% 이상 나온 단어는 무시") 
+
+tfidf = TfidfVectorizer(tokenizer = okt.nouns, max_features = 4000, min_df=5, max_df=0.5) 과 같은 형태 가능
+
+
+
+
+
+
+
+
+
 3.word2vec :단어를 벡터로 표현하며, 의미적 유사성을 잘 반영하도록 학습
          ->유사 문서나 단어 검색에 이용 ex) “king - man + woman ≈ queen” 같은 연산이 가능
 두가지 방식: CBOW(주변단어통해 중심단어 예측), Skip-Gram(중심단어통해 주변단어예측)-> CBOW보다 더 효율적 
