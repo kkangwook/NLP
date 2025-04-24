@@ -49,12 +49,16 @@ texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500G
 
 
 
---'텍스트' classification에 쓰이는 모델 두가지-------------------
+--'텍스트' classification에 쓰이는 nltk모델 두가지-------------------
 
+-nltk와 sklearn의 분류모델의 차이점은?
+-nltk의 두 모델 차이는?                    (지도학습vs비지도학습)
 
 6. NaiveBayesClassifier 분류기
 from nltk.classify import NaiveBayesClassifier  
 from nltk.classify.util import accuracy
+
+-들어갈수있는 타깃형태는?
 
 dataset = [
     ("I love this movie, it’s fantastic!", 'positive'),
@@ -87,3 +91,18 @@ documents = [
 ]
 이 document를 KMeansClustere에 넣어 유사한 문서끼리 분류하고 클래스가 3일때의 결과값은?
 옵션: assign_clusters=True
+
+
+
+--'텍스트' classification에 쓰이는 sklearn모델 -------------------
+from sklearn.naive_bayes import MultinomialNB # Naive Bayes model
+from sklearn.metrics import accuracy_score, confusion_matrix # 평가 
+from sklearn.preprocessing import LabelEncoder # 10진수 인코딩 
+
+-multinomialNB에 들어갈 수 있는 데이터 형태는?                              (tfidf,인코딩/문자)
+
+-데이터: df[0]가 정답, df[1]이 텍스트
+path = r"C:\ITWILL\3_TextMining\data"
+df = pd.read_csv(path + '/spam_data.csv', header=None, encoding='utf-8')
+
+이 데이터를 전처리하고 test_size=0.2로->학습->예측(텍스트와 예측값 같이보기)->검증 두가지
