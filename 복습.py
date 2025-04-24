@@ -48,6 +48,10 @@ texts = ["우리나라    대한민국, 우리나라 만세", "비아그라 500G
 -11. 국어-영어-수학-과학을 x로 사회를y로하고 0.3의 비율로 train-test split
 
 
+
+--'텍스트' classification에 쓰이는 모델 두가지-------------------
+
+
 6. NaiveBayesClassifier 분류기
 from nltk.classify import NaiveBayesClassifier  
 from nltk.classify.util import accuracy
