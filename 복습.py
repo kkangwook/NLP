@@ -94,7 +94,10 @@ documents = [
 
 
 
---'텍스트' classification에 쓰이는 sklearn모델 -------------------
+--'텍스트' classification에 쓰이는 sklearn모델 두가지-------------------
+
+-두 모델 차이점은?                    (지도학습 vs 비지도학습)
+1. 분류
 from sklearn.naive_bayes import MultinomialNB # Naive Bayes model
 from sklearn.metrics import accuracy_score, confusion_matrix # 평가 
 from sklearn.preprocessing import LabelEncoder # 10진수 인코딩 
@@ -107,3 +110,23 @@ df = pd.read_csv(path + '/spam_data.csv', header=None, encoding='utf-8')
 
 -이 데이터를 전처리하고 test_size=0.2로->학습->예측(텍스트와 예측값 같이보기)->검증 두가지
 -정답을 정수 인코딩해서도 해보기
+
+
+2.군집화
+from sklearn.cluster import KMeans
+
+-데이터
+documents = [
+    "I don't like rainy days.",
+    "She isn't feeling well today.",
+    "They haven't finished their homework yet.",
+    "He can't stand the cold weather.",
+    "We didn't enjoy the movie at all.",
+    "I love spending time with my family.",
+    "She is an incredibly talented musician.",
+    "They have accomplished so much in their careers.",
+    "He always has a positive attitude.",
+    "We had a fantastic time on our vacation."
+]
+
+-데이터 전처리해서 n=2로 군집화
