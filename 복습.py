@@ -105,4 +105,5 @@ from sklearn.preprocessing import LabelEncoder # 10진수 인코딩
 path = r"C:\ITWILL\3_TextMining\data"
 df = pd.read_csv(path + '/spam_data.csv', header=None, encoding='utf-8')
 
-이 데이터를 전처리하고 test_size=0.2로->학습->예측(텍스트와 예측값 같이보기)->검증 두가지
+-이 데이터를 전처리하고 test_size=0.2로->학습->예측(텍스트와 예측값 같이보기)->검증 두가지
+-정답을 정수 인코딩해서도 해보기
