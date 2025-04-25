@@ -59,7 +59,7 @@ print(valid)  #diagnol이 정분류된애들 개수, 나머지가 잘못분류�
 
 score=accuracy_score(y_test, y_pred)
 print(score)   # R^2값과 유사(실제y값, 예측y값으로 넣어야함)
-
+!!!!!!!!!!!!!그냥 model.score사용가능!!!!!!!!!!
 
 
 2. 텍스트 클러스터화 : 동일한 sklearn.cluster.KMeans사용 but tfidf화 필요
