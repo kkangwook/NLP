@@ -90,6 +90,9 @@ num_clusters = 2
 kmeans = KMeans(n_clusters=num_clusters)
 kmeans.fit(tfidf_matrix)
 
+#결과
+kmeans.labels_ #각 인덱스별 군집 번호 출력
+
 # 클러스터 결과 출력
 for i in range(num_clusters):
     cluster = np.where(kmeans.labels_ == i)[0] # 조건식의 True인 요소의 인덱스 반환
