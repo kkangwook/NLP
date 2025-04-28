@@ -129,4 +129,5 @@ documents = [
     "We had a fantastic time on our vacation."
 ]
 
--데이터 전처리해서 n=2로 군집화
+-데이터 전처리해서 n=2로 군집화-> 어떻게 군집화 됐는지 보기
+text=["i don't like, hate, isn't"]로 예측해보기
