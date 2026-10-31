@@ -30,6 +30,7 @@ His barber kept his secret. But keeping and keeping such a huge secret to himsel
 ######
 ######
 => tokenizer에 들어가는거 done처럼 단어 하나씩 들어가도 되고 df[col]처럼 하나의 문장이 들어가도 됨!!!!!
+        -> tokenizer는 그냥 단순히 공백별로 단어로 나눠서 토큰화함!!!
 ######
 
 
